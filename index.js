@@ -16,15 +16,32 @@ function getDataFromApi(userInput, callback) {
 
 function renderResult(result) {
   const videoLink = `https://www.youtube.com/results?search_query=${result.id.videoId}`;
-  return `<div class='results'><a href="${videoLink}"><img src="${result.snippet.thumbnails.medium.url}" 
+
+
+  return `<div class='results'><a href="${videoLink}" target='_blank'><img src="${result.snippet.thumbnails.medium.url}" 
           alt='${result.snippet.title}'/></a></div>`;
 }
 
+/*function renderNumResults(data) {
+  const numResults = data.pageInfo.resultsPerPage;
+  console.log(numResults);
+  return `<p>There are ${numResults} videos</p>`;
+>>>>>>> a11y-updates
+}
+
+function displayNumResults(data) {
+  const numberOfResults = renderNumResults(data);
+  $('.js-search-results').html(numberOfResults);
+}*/
+
 function displayYouTubeData(data) {
-  const results = data.items.map((item, index) => renderResult(item));
   
-  //console.log(data.items[0].snippet.title);
-  $('.js-search-results').html(results);
+  const results = data.items.map((item, index) => renderResult(item));
+  //displayNumResults(data);
+  const numberOfResults = results.length;
+  $('.js-num-results').prop('hidden', false).html(`<div class='numberRes'>There are ${numberOfResults} videos</div>`);
+  //$('.js-search-results').prop('hidden', false).html(`<h1>this is a header</h1><br>`);
+  $('.js-search-results').prop('hidden', false).html(results);
 }
 
 function getSubmitDisplay () {
@@ -41,7 +58,9 @@ function getSubmitDisplay () {
     const query = queryTarget.val();
     // clear out the input
     queryTarget.val("");
+    
     getDataFromApi(query, displayYouTubeData);
+    
     console.log(query);
     
   });
