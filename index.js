@@ -25,6 +25,7 @@ function renderResult(result) {
   const numResults = data.pageInfo.resultsPerPage;
   console.log(numResults);
   return `<p>There are ${numResults} videos</p>`;
+
 }
 
 function displayNumResults(data) {
