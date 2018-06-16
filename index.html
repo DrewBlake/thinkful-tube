@@ -15,13 +15,13 @@
     <main role="main">
         <h1>Search YouTube Videos</h1>
           <form action="#" class="js-search-form">
-            <label for="query"></label>
+            <label for="query"> Enter a video search subject</label>
             <input type="text" id="query" class="js-query" required>
             <button type="submit">Search</button>
           </form>
           
-          <h2>Results</h2>
-          <div class="js-search-results">
+          <h2 class="js-num-results" aria-live='assertive'></h2>
+          <div class="js-search-results" aria-live='assertive'>
             
           </div>
       </main>

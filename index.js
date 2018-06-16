@@ -16,13 +16,28 @@ function getDataFromApi(userInput, callback) {
 
 function renderResult(result) {
   const videoLink = `https://www.youtube.com/results?search_query=${result.id.videoId}`;
-  return `<div class='results'><a href="${videoLink}"><img src="${result.snippet.thumbnails.medium.url}" alt='${result.snippet.title}'/></a></div>`;
+
+  return `<div class='results'><a href="${videoLink}"><img src="${result.snippet.thumbnails.medium.url}" 
+          alt='${result.snippet.title}'/></a></div>`;
 }
 
+/*function renderNumResults(data) {
+  const numResults = data.pageInfo.resultsPerPage;
+  console.log(numResults);
+  return `<p>There are ${numResults} videos</p>`;
+}
+
+function displayNumResults(data) {
+  const numberOfResults = renderNumResults(data);
+  $('.js-search-results').html(numberOfResults);
+}*/
+
 function displayYouTubeData(data) {
-  const results = data.items.map((item, index) => renderResult(item));
   
-  //console.log(data.items[0].snippet.title);
+  const results = data.items.map((item, index) => renderResult(item));
+  //displayNumResults(data);
+  const numberOfResults = results.length;
+  $('.js-num-results').html(`<div class='numberRes'>there are ${numberOfResults} videos</div>`);
   $('.js-search-results').html(results);
 }
 
@@ -40,7 +55,9 @@ function getSubmitDisplay () {
     const query = queryTarget.val();
     // clear out the input
     queryTarget.val("");
+    
     getDataFromApi(query, displayYouTubeData);
+    
     console.log(query);
     
   });
