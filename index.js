@@ -16,7 +16,8 @@ function getDataFromApi(userInput, callback) {
 
 function renderResult(result) {
   const videoLink = `https://www.youtube.com/results?search_query=${result.id.videoId}`;
-  return `<div class='results'><a href="${videoLink}"><img src="${result.snippet.thumbnails.medium.url}" alt='${result.snippet.title}'/></a></div>`;
+  return `<div class='results' aria-live='assertive'><a href="${videoLink}"><img src="${result.snippet.thumbnails.medium.url}" 
+          alt='${result.snippet.title}'/></a></div>`;
 }
 
 function displayYouTubeData(data) {
