@@ -15,7 +15,7 @@ function getDataFromApi(userInput, callback) {
 //https://www.youtube.com/results?search_query=ws1o-N024es
 
 function renderResult(result) {
-  const videoLink = `https://www.youtube.com/results?search_query=${result.id.videoId}`;
+  const videoLink = `https://www.youtube.com/watch?v=${result.id.videoId}`;
 
   return `<div class='results'><a href="${videoLink}" target='_blank'><img src="${result.snippet.thumbnails.medium.url}" 
           alt='${result.snippet.title}'/></a></div>`;
