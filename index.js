@@ -26,7 +26,11 @@ function renderResult(result) {
   const numResults = data.pageInfo.resultsPerPage;
   console.log(numResults);
   return `<p>There are ${numResults} videos</p>`;
+<<<<<<< HEAD
 >>>>>>> a11y-updates
+=======
+
+>>>>>>> df82c2cde0fcc8e3bb2c421a827fba3844b01c94
 }
 
 function displayNumResults(data) {
